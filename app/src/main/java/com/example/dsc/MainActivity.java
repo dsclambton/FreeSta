@@ -8,12 +8,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     TextView textView;
     EditText emaildId, password;
     Button loginbtn;
+    FirebaseAuth fAuth;
 
 
     @Override
@@ -25,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         emaildId = findViewById( R.id.email );
         password = findViewById( R.id.password );
         loginbtn = findViewById( R.id.button );
-
+        fAuth = FirebaseAuth.getInstance();
 
 
         loginbtn.setOnClickListener( new View.OnClickListener() {
@@ -45,10 +52,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,"Fields are Empty",Toast.LENGTH_SHORT).show();
                 }
 
-                else {
-                    Toast.makeText(MainActivity.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
 
-                }
+                fAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }else{
+                            Toast.makeText(MainActivity.this, "Error Occurred!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         } );
 

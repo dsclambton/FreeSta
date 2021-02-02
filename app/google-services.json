@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "277918685520",
+    "project_id": "freesta-aa539",
+    "storage_bucket": "freesta-aa539.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277918685520:android:0a9bbc6feae3651300b455",
+        "android_client_info": {
+          "package_name": "com.example.dsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277918685520-7k45ov4frkd9q02oor6b9gl4g41cc7e1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dsc",
+            "certificate_hash": "a5490278857aba5a19cbfedff7c44be8d30f421d"
+          }
+        },
+        {
+          "client_id": "277918685520-shjgg2j4oir43mb43nuka110umlej422.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzC2kfEz2Pv2XOnStHQ3-IMSBEoRouqro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277918685520-shjgg2j4oir43mb43nuka110umlej422.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,12 +8,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
     TextView textView;
     EditText emaildId, password;
     Button regbtn;
+    FirebaseAuth fAuth;
 
 
     @Override
@@ -25,6 +32,8 @@ public class Register extends AppCompatActivity {
         emaildId = findViewById( R.id.email );
         password = findViewById( R.id.password );
         regbtn = findViewById( R.id.register );
+
+        fAuth = FirebaseAuth.getInstance();
 
         regbtn.setOnClickListener( new View.OnClickListener() {
 
@@ -40,10 +49,19 @@ public class Register extends AppCompatActivity {
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     Toast.makeText( Register.this, "Fields are Empty", Toast.LENGTH_SHORT ).show();
-                } else {
-                    Toast.makeText( Register.this, "Error Occurred!", Toast.LENGTH_SHORT ).show();
-
                 }
+
+                fAuth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }else{
+                            Toast.makeText(Register.this, "Error Occurred!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         } );
 
