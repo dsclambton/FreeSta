@@ -20,7 +20,7 @@ public class Register extends AppCompatActivity {
     TextView textView;
     EditText emaildId, password;
     Button regbtn;
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth fbaseAuth;
 
 
     @Override
@@ -33,7 +33,7 @@ public class Register extends AppCompatActivity {
         password = findViewById( R.id.password );
         regbtn = findViewById( R.id.register );
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        fbaseAuth = FirebaseAuth.getInstance();
 
         regbtn.setOnClickListener( new View.OnClickListener() {
 
@@ -51,7 +51,7 @@ public class Register extends AppCompatActivity {
                     Toast.makeText( Register.this, "Fields are Empty", Toast.LENGTH_SHORT ).show();
                 }
 
-                firebaseAuth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fbaseAuth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){

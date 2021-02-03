@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     EditText emaildId, password;
     Button loginbtn;
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth fbaseAuth;
 
 
     @Override
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         emaildId = findViewById( R.id.email );
         password = findViewById( R.id.password );
         loginbtn = findViewById( R.id.button );
-        firebaseAuth = FirebaseAuth.getInstance();
+        fbaseAuth = FirebaseAuth.getInstance();
 
 
         loginbtn.setOnClickListener( new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fbaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
