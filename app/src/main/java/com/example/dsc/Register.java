@@ -42,10 +42,10 @@ public class Register extends AppCompatActivity {
                 String email = emaildId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {
-                    emaildId.setError( "Please enter the email id" );
+                    emaildId.setError("Please enter the email id");
                     emaildId.requestFocus();
                 } else if (pwd.isEmpty()) {
-                    password.setError( "Please enter your password" );
+                    password.setError("Please enter your password");
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     Toast.makeText( Register.this, "Fields are Empty", Toast.LENGTH_SHORT ).show();
